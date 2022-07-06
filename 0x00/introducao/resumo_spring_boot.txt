@@ -1,0 +1,9 @@
+#1: O Spring Boot é um framework que realiza a terceirização das configurações de execução do projeto utilizando o padrão de Convention over Configuration, ou seja, a configuração caso não específicada será considerada a da convenção (padrão). Com isso muito da sobrecarga das díficeis decisões de configurações são abstraídas do desenvolvedor que pode focar exclusivamente na lógica de négocio.
+
+#2: Dentre os benefícios do Spring Boot está a configuração automatica do projeto e dependências de acordo com convenções, o que diminui muito a necessidade de ajustes manuais por parte do desenvolvedor. O fornecimento de um servlet container já pré-configurado para execução do projeto, que por padrão é o Tomcat. Criação de JAR's com estrutura de um projeto Spring Boot, que possuí o código da lógica de negócio, o servidor e as dependências, podendo ser executado facilmente como um arquivo Java qualquer. Integração com o Maven e Gradle para facilitação da específicação de dependências.
+
+#3: Através do próprio Maven, especificando a dependência, ou através da inclusão de dependências de projetos do próprio Spring, os quais são modulos que oferecem suportes e configurações específicas para certos pacotes, por exemplo o Spring JPA.
+
+#4: Atualualmente o Spring Tools foi substituído pelo plugin Spring Tools 4 para Eclipse, VS Code e Theia, ou seja, as funcionalidades que a antiga IDE provia agora pode ser facilmente integrada em outras IDE's, com isso creio que vai mais uma questão de preferência. Eu gosto de utilizar o VS Code devido a sua vasta biblioteca e comunidade desenvolvedora de Plugins, o que torna a IDE um verdadeiro monstro.
+
+#5: Spring Initializr é uma ferramenta que realiza o bootstrap de projetos Spring de acordo com a configuração que você específicar. Com isso você já terá um projeto já pré-configurado do jeito que você informou na ferramenta.
