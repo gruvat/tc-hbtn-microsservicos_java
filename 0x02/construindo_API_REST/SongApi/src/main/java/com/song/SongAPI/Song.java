@@ -1,4 +1,4 @@
-package com.song.demo;
+package com.song.SongAPI;
 
 public class Song {
     private Integer id;

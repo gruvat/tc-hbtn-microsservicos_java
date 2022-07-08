@@ -1,4 +1,4 @@
-package com.song.demo;
+package com.song.SongAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
