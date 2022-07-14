@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "1ce1a274-c0fd-4b6e-8e1c-032d2818b825",
+		"name": "CLIENTES API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ADD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Marcos\",\n    \"idade\": \"22\",\n    \"email\": \"mgalvao@ciant.com\",\n    \"telefones\": [\n        {\"ddd\": \"81\", \"numero\": \"993817977\"}\n    ],\n    \"enderecos\": [\n        {\n            \"logradouro\": \"Rua\",\n            \"endereco\": \"Cruz\",\n            \"numero\": \"118-m\",\n            \"bairro\": \"prazeres\",\n            \"cidade\": \"jaboatão dos guararapes\",\n            \"estado\": \"pernambuco\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api-jpa-h2/addClient",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api-jpa-h2",
+						"addClient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND_ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api-jpa-h2/findAllClients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api-jpa-h2",
+						"findAllClients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND_BY_ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api-jpa-h2/findClientById/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api-jpa-h2",
+						"findClientById",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_BY_ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api-jpa-h2/removeClientById/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api-jpa-h2",
+						"removeClientById",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Marcos\",\n    \"idade\": \"25\",\n    \"email\": \"mgalvao@ciant.com\",\n    \"telefones\": [\n        {\"ddd\": \"81\", \"numero\": \"993817977\"}\n    ],\n    \"enderecos\": [\n        {\n            \"logradouro\": \"Rua\",\n            \"endereco\": \"Cruz\",\n            \"numero\": \"118-m\",\n            \"bairro\": \"prazeres\",\n            \"cidade\": \"jaboatão dos guararapes\",\n            \"estado\": \"pernambuco\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api-jpa-h2/updateClientById/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api-jpa-h2",
+						"updateClientById",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
