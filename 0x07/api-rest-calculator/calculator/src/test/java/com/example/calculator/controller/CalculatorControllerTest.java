@@ -1,12 +1,14 @@
 package com.example.calculator.controller;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+
+import com.example.calculator.service.CalculatorService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -14,11 +16,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.time.LocalDate;
 
-@ExtendWith(SpringExtension.class)
 @WebMvcTest(CalculatorController.class)
 public class CalculatorControllerTest {
+
     @Autowired
     private MockMvc mvc;
+
+    @TestConfiguration
+    static class InnerConfiguration {
+        @Bean
+        CalculatorService calc() {
+            return new CalculatorService();
+        }
+    }
 
     @Test
     void messageWelcome() throws Exception {
@@ -38,6 +48,32 @@ public class CalculatorControllerTest {
     }
 
     @Test
+    void InvalidAddNumbers() throws Exception {
+        mvc.perform(get("/calculator/addNumbers")
+                                    .param("number1", "10")
+                                    .param("number2", "0")
+                                )
+                                .andExpect(status().isOk());
+    }
+
+    @Test
+    void addOnlyOneNumber() throws Exception {
+        mvc.perform(get("/calculator/addNumbers")
+                                    .param("number1", "10")
+                                    .param("number1", "")
+                                )
+                                .andExpect(status().isInternalServerError());
+    }
+
+    @Test
+    void requestSumMissingOneNumber() throws Exception {
+        mvc.perform(get("/calculator/addNumbers")
+                                    .param("number1", "10")
+                                )
+                                .andExpect(status().isInternalServerError());
+    }
+
+    @Test
     void subNumbers() throws Exception {
         MvcResult result = mvc.perform(get("/calculator/subNumbers")
                                     .param("number1", "5")
@@ -49,6 +85,32 @@ public class CalculatorControllerTest {
     }
 
     @Test
+    void InvalidSubNumbers() throws Exception {
+        mvc.perform(get("/calculator/subNumbers")
+                                    .param("number1", "10")
+                                    .param("number2", "0")
+                                )
+                                .andExpect(status().isOk());
+    }
+
+    @Test
+    void subOnlyOneNumber() throws Exception {
+        mvc.perform(get("/calculator/subNumbers")
+                                    .param("number1", "10")
+                                    .param("number1", "")
+                                )
+                                .andExpect(status().isInternalServerError());
+    }
+
+    @Test
+    void requestSubMissingOneNumber() throws Exception {
+        mvc.perform(get("/calculator/subNumbers")
+                                    .param("number1", "10")
+                                )
+                                .andExpect(status().isInternalServerError());
+    }
+
+    @Test
     void divideNumbers() throws Exception {
         MvcResult result = mvc.perform(get("/calculator/divideNumbers")
                                     .param("number1", "10")
@@ -57,6 +119,15 @@ public class CalculatorControllerTest {
                                 .andExpect(status().isOk())
                                 .andReturn();
         assertEquals("2.0", result.getResponse().getContentAsString());
+    }
+
+    @Test
+    void divideNumberPerZero() throws Exception {
+        mvc.perform(get("/calculator/divideNumbers")
+                                    .param("number1", "10")
+                                    .param("number2", "0")
+                                )
+                                .andExpect(status().isBadRequest());
     }
 
     @Test

@@ -1,9 +1,12 @@
-package com.example.calculator.model;
+package com.example.calculator.service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Calculator {
+import org.springframework.stereotype.Service;
+
+@Service
+public class CalculatorService {
 
     public Double sum(Double number1, Double number2) {
         if(number1.equals(null) || number2.equals(null)) {

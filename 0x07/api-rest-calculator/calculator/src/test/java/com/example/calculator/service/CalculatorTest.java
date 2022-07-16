@@ -1,4 +1,4 @@
-package com.example.calculator.model;
+package com.example.calculator.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -10,11 +10,11 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
 
-    private Calculator calc;
+    private CalculatorService calc;
 
     @BeforeEach
     void config() {
-        calc = new Calculator();
+        calc = new CalculatorService();
     }
     
     @Test

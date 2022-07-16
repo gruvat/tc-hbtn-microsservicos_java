@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.calculator.model.Calculator;
+import com.example.calculator.service.CalculatorService;
 
 @RestController
 @RequestMapping("/calculator")
 public class CalculatorController {
 
-    private Calculator calc = new Calculator();
+    private CalculatorService calc;
+
+    public CalculatorController(CalculatorService calc) {
+        this.calc = calc;
+    }
 
     @GetMapping("/welcome")
     public String messageWelcome() {
