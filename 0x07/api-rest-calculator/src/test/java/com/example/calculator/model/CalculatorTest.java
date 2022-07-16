@@ -5,11 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
 
-    private Calculator calc = new Calculator();
+    private Calculator calc;
+
+    @BeforeEach
+    void config() {
+        calc = new Calculator();
+    }
     
     @Test
     void sumTest() {
